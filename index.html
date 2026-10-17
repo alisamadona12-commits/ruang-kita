@@ -209,6 +209,47 @@ select {
   h1 {
     line-height: 1.2;
   }
+
+/* FIX: Cyberpunk cards and input fields */
+
+.card,
+article,
+input,
+textarea,
+select {
+  background-color: #111525 !important;
+  color: #F1F5FF !important;
+  border: 1px solid #454064;
+  border-radius: 10px;
+}
+
+.card *,
+article * {
+  color: #F1F5FF;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #A6B0CC !important;
+  opacity: 1;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid #35E7FF;
+  outline-offset: 1px;
+  border-color: #35E7FF;
+}
+
+.card a,
+article a {
+  color: #35E7FF !important;
+}
+
+.card button,
+article button {
+  color: #FFFFFF !important;
 }
   </style>
 </head>
