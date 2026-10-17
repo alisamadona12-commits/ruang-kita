@@ -113,6 +113,103 @@
       color: #80758f;
       font-size: 12px;
     }
+/* === RUANG KITA: CYBERPUNK THEME === */
+:root {
+  color-scheme: dark;
+  --cyber-bg: #080a12;
+  --cyber-panel: #111525;
+  --cyber-purple: #b44cff;
+  --cyber-cyan: #35e7ff;
+  --cyber-text: #edf2ff;
+  --cyber-muted: #9ba8c7;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--cyber-bg);
+  background-image:
+    radial-gradient(
+      ellipse at 15% 0%,
+      rgba(180, 76, 255, 0.16),
+      transparent 45%
+    ),
+    radial-gradient(
+      ellipse at 90% 20%,
+      rgba(53, 231, 255, 0.09),
+      transparent 40%
+    );
+  color: var(--cyber-text);
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.logo {
+  color: var(--cyber-cyan);
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-shadow: 0 0 14px rgba(53, 231, 255, 0.4);
+}
+
+h1, h2, h3 {
+  color: var(--cyber-text);
+  letter-spacing: 0.5px;
+}
+
+a {
+  color: var(--cyber-cyan);
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--cyber-purple);
+}
+
+button,
+.btn {
+  border: 1px solid var(--cyber-cyan);
+  border-radius: 8px;
+  background: linear-gradient(
+    135deg,
+    rgba(180, 76, 255, 0.2),
+    rgba(53, 231, 255, 0.12)
+  );
+  color: var(--cyber-text);
+  padding: 10px 16px;
+  transition: 0.2s ease;
+}
+
+button:hover,
+.btn:hover {
+  box-shadow: 0 0 18px rgba(53, 231, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+input,
+textarea,
+select {
+  background: #0c1020;
+  color: var(--cyber-text);
+  border: 1px solid #343b59;
+  border-radius: 8px;
+}
+
+::selection {
+  background: var(--cyber-purple);
+  color: #ffffff;
+}
+
+@media (max-width: 600px) {
+  body {
+    font-size: 15px;
+  }
+
+  h1 {
+    line-height: 1.2;
+  }
+}
   </style>
 </head>
 <body>
