@@ -413,6 +413,103 @@ body > header .tag {
     font-size: 25px;
   }
 }
+/* KARTU LOGIN NEON - RUANG KITA */
+.login-section {
+  width: calc(100% - 32px);
+  max-width: 700px;
+  margin: 56px auto 70px;
+  padding: 36px 32px;
+  box-sizing: border-box;
+  text-align: center;
+  background: rgba(9, 12, 43, 0.94);
+  color: #f5f0ff;
+  border: 2px solid #813cff;
+  border-radius: 26px;
+  box-shadow:
+    0 0 18px rgba(129, 60, 255, 0.25),
+    inset 0 0 28px rgba(58, 65, 180, 0.12);
+}
+
+.login-section h2 {
+  color: #e4d5ff;
+  font-size: 32px;
+  line-height: 1.3;
+  margin: 0 0 12px;
+}
+
+.login-section > p {
+  color: #c7c9ff;
+  line-height: 1.6;
+  margin: 0 0 32px;
+}
+
+.login-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+
+.login-section label {
+  color: #f3edff;
+  font-size: 17px;
+  margin-top: 8px;
+}
+
+.login-section input {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  padding: 16px;
+  box-sizing: border-box;
+  color: #ffffff;
+  background: #15183e;
+  border: 1.5px solid #7040ff;
+  border-radius: 16px;
+  font-size: 16px;
+  outline: none;
+}
+
+.login-section input::placeholder {
+  color: #a8a8d9;
+}
+
+.login-section input:focus {
+  border-color: #35e7ff;
+  box-shadow: 0 0 12px rgba(53, 231, 255, 0.25);
+}
+
+.login-section button {
+  width: 100%;
+  min-height: 58px;
+  margin-top: 22px;
+  border: 1px solid #a77bff;
+  border-radius: 18px;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
+  background: linear-gradient(110deg, #a12bff, #543bff, #328dff);
+  box-shadow: 0 0 18px rgba(117, 65, 255, 0.35);
+}
+
+.login-section #login-status {
+  color: #c7c9ff;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 480px) {
+  .login-section {
+    width: calc(100% - 28px);
+    margin: 32px auto 48px;
+    padding: 26px 18px;
+    border-radius: 22px;
+  }
+
+  .login-section h2 {
+    font-size: 26px;
+  }
+}
   </style>
 </head>
 <body>
