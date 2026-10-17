@@ -274,6 +274,65 @@ article button {
 .features article p {
   color: #e9e3f5 !important;
 }
+/* 🌌 RUANG KITA — ANIMASI NEBULA */
+body > header {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: linear-gradient(
+    120deg,
+    #080817,
+    #32105b,
+    #101f55,
+    #641b73,
+    #080817
+  ) !important;
+  background-size: 400% 400% !important;
+  animation: galaksi 14s ease infinite;
+  border: 1px solid rgba(167, 139, 250, 0.65);
+  border-radius: 18px;
+  box-shadow: 0 0 24px rgba(139, 92, 246, 0.35);
+}
+
+/* ✨ Cahaya nebula yang berpendar */
+body > header::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 25% 35%,
+      rgba(168, 85, 247, 0.65), transparent 35%),
+    radial-gradient(ellipse at 75% 60%,
+      rgba(59, 130, 246, 0.55), transparent 35%),
+    radial-gradient(ellipse at 50% 20%,
+      rgba(236, 72, 153, 0.35), transparent 30%);
+  filter: blur(12px);
+  animation: nebula 10s ease-in-out infinite alternate;
+}
+
+/* Tulisan tetap terang */
+body > header .logo {
+  color: #ffffff !important;
+  text-shadow: 0 0 12px #a855f7, 0 0 24px #6366f1;
+}
+
+body > header .tag {
+  color: #e9d5ff !important;
+}
+
+/* Gerakan warna galaksi */
+@keyframes galaksi {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes nebula {
+  0% { transform: translate(-4%, -3%) rotate(0deg); }
+  100% { transform: translate(4%, 3%) rotate(12deg); }
+}
   </style>
 </head>
 <body>
