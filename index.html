@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f5ff">
+  <title>Ruang Kita — Komunitas Privat</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #302747;
+      background: #f8f5ff;
+    }
+
+    header {
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: white;
+      border-bottom: 1px solid #eee7fa;
+    }
+
+    .logo {
+      font-size: 21px;
+      font-weight: 800;
+      color: #7651c9;
+    }
+
+    .tag {
+      color: #6d5b8b;
+      font-size: 12px;
+    }
+
+    main {
+      width: min(900px, 92%);
+      margin: 45px auto;
+    }
+
+    .hero {
+      padding: 38px 25px;
+      border-radius: 24px;
+      text-align: center;
+      background: linear-gradient(135deg, #eee5ff, #fff0f5);
+    }
+
+    .hero .emoji { font-size: 42px; }
+
+    h1 {
+      margin: 12px 0;
+      font-size: clamp(30px, 7vw, 46px);
+    }
+
+    .hero p {
+      line-height: 1.7;
+      max-width: 540px;
+      margin: 12px auto 22px;
+    }
+
+    .button {
+      display: inline-block;
+      border: 0;
+      border-radius: 12px;
+      padding: 13px 20px;
+      font-size: 15px;
+      font-weight: bold;
+      background: #7651c9;
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .feature {
+      padding: 21px;
+      background: white;
+      border: 1px solid #eee7fa;
+      border-radius: 18px;
+    }
+
+    .feature .emoji { font-size: 27px; }
+    .feature h2 { font-size: 17px; }
+    .feature p {
+      color: #706782;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .notice {
+      margin-top: 22px;
+      padding: 17px;
+      border-radius: 14px;
+      background: #fff;
+      color: #6d5b8b;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #80758f;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <div class="logo">♡ Ruang Kita</div>
+      <div class="tag">Tempat cerita, tempat bersama</div>
+    </div>
+    <span aria-label="Komunitas privat">🔒 Privat</span>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="emoji">💜</div>
+      <h1>Selamat datang di Ruang Kita</h1>
+      <p>
+        Sebuah ruang untuk berbagi cerita, foto, dan momen
+        bersama orang-orang yang kamu undang.
+      </p>
+      <a class="button" href="#tentang">Kenali komunitas</a>
+    </section>
+
+    <section class="features" id="tentang">
+      <article class="feature">
+        <div class="emoji">📝</div>
+        <h2>Berbagi cerita</h2>
+        <p>Tempat untuk postingan teks dan momen berharga.</p>
+      </article>
+      <article class="feature">
+        <div class="emoji">💬</div>
+        <h2>Obrolan pribadi</h2>
+        <p>Rencanakan percakapan pribadi antaranggota.</p>
+      </article>
+      <article class="feature">
+        <div class="emoji">👥</div>
+        <h2>Ruang bersama</h2>
+        <p>Ruang chat grup untuk berkumpul dan berdiskusi.</p>
+      </article>
+    </section>
+
+    <div class="notice">
+      🔐 Halaman ini adalah tampilan awal. Login, undangan,
+      dan perlindungan konten anggota belum diaktifkan.
+      Jangan bagikan informasi pribadi di halaman ini.
+    </div>
+  </main>
+
+  <footer>Ruang Kita © 2026 · Dibuat dengan ♡</footer>
+</body>
+</html>
