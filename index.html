@@ -613,20 +613,81 @@ body > header .tag {
   );
 
   
-  const statusTes = document.createElement('p');
-  statusTes.id = 'supabase-test-status';
-  statusTes.textContent = 'Sedang memeriksa koneksi Supabase...';
-  document.body.appendChild(statusTes);
+  
+const loginForm = document.getElementById('login-form');
+const emailInput = document.getElementById('email');
+const passwordInput = document.getElementById('password');
+const loginStatus = document.getElementById('login-status');
+const signupStatus = document.getElementById('signup-status');
+const showSignupButton = document.getElementById('show-signup');
+const submitButton = loginForm.querySelector('button[type="submit"]');
 
-  supabaseClient.auth.getSession()
-    .then(({ error }) => {
-      statusTes.textContent = error
-        ? 'Koneksi Supabase bermasalah: ' + error.message
-        : 'Supabase merespons dengan baik!';
-    })
-    .catch(() => {
-      statusTes.textContent = 'Tes koneksi gagal. Periksa URL, key, dan koneksi internet.';
-    });
+let mode = 'login';
+
+showSignupButton.addEventListener('click', () => {
+  mode = mode === 'login' ? 'signup' : 'login';
+
+  submitButton.textContent = mode === 'signup' ? 'Daftar' : 'Masuk';
+
+  showSignupButton.textContent = mode === 'signup'
+    ? 'Sudah punya akun? Masuk di sini'
+    : 'Daftar di sini';
+
+  loginStatus.textContent = '';
+  signupStatus.textContent = mode === 'signup'
+    ? 'Isi email dan password untuk membuat akun.'
+    : '';
+});
+
+loginForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  loginStatus.textContent = '';
+  signupStatus.textContent = '';
+
+  const email = emailInput.value.trim();
+  const password = passwordInput.value;
+
+  submitButton.disabled = true;
+
+  try {
+    if (mode === 'signup') {
+      const { data, error } = await supabaseClient.auth.signUp({
+        email,
+        password,
+        options: {
+          emailRedirectTo: window.location.origin + window.location.pathname
+        }
+      });
+
+      if (error) {
+        signupStatus.textContent = 'Pendaftaran gagal: ' + error.message;
+      } else if (data.session) {
+        signupStatus.textContent = 'Akun berhasil dibuat dan kamu sudah masuk.';
+      } else {
+        signupStatus.textContent =
+          'Pendaftaran berhasil. Periksa email untuk verifikasi akun.';
+      }
+    } else {
+      const { data, error } = await supabaseClient.auth.signInWithPassword({
+        email,
+        password
+      });
+
+      if (error) {
+        loginStatus.textContent = 'Login gagal: ' + error.message;
+      } else {
+        loginStatus.textContent =
+          'Berhasil masuk! Selamat datang di Ruang Kita.';
+      }
+    }
+  } catch (error) {
+    const status = mode === 'signup' ? signupStatus : loginStatus;
+    status.textContent = 'Terjadi kesalahan. Coba lagi nanti.';
+  } finally {
+    submitButton.disabled = false;
+  }
+});
 </script>
 </body>
 </html>
