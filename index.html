@@ -522,6 +522,73 @@ body > header .tag {
     font-size: 26px;
   }
 }
+  
+/* Dashboard Ruang Kita */
+.dashboard {
+  display: none;
+  width: min(1200px, 94%);
+  margin: 24px auto;
+  color: #f5f0ff;
+}
+
+.dashboard-header {
+  padding: 28px;
+  border: 1px solid #6537bd;
+  border-radius: 22px;
+  background:
+    radial-gradient(ellipse at 85% 20%, #7138c955, transparent 45%),
+    linear-gradient(135deg, #171035, #090b20);
+  box-shadow: 0 0 25px #702cf52b;
+}
+
+.dashboard-header h1 {
+  margin: 0 0 12px;
+  font-size: clamp(26px, 6vw, 42px);
+}
+
+.dashboard-header p {
+  color: #d0c4f4;
+  line-height: 1.7;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.dashboard-card {
+  padding: 20px;
+  border: 1px solid #38266d;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #171331, #0c1025);
+}
+
+.dashboard-card h2 {
+  margin-top: 0;
+  color: #d9b8ff;
+  font-size: 18px;
+}
+
+.dashboard-card p {
+  color: #c7c1df;
+  line-height: 1.6;
+}
+
+@media (max-width: 480px) {
+  .dashboard {
+    margin: 18px auto;
+  }
+
+  .dashboard-header {
+    padding: 22px 18px;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
   </style>
 </head>
 <body>
@@ -602,6 +669,38 @@ body > header .tag {
     </div>
   </main>
 
+  <section class="dashboard" id="dashboard">
+    <div class="dashboard-header">
+      <h1>🌌 Selamat datang di Ruang Kita</h1>
+      <p>
+        Tempat kita berbagi cerita, saling mendukung,
+        dan tumbuh bersama.
+      </p>
+      <p id="dashboard-user"></p>
+    </div>
+
+    <div class="dashboard-grid">
+      <article class="dashboard-card">
+        <h2>📝 Berbagi Cerita</h2>
+        <p>Bagikan kisah dan momen berharga bersama komunitas.</p>
+      </article>
+
+      <article class="dashboard-card">
+        <h2>💬 Obrolan Pribadi</h2>
+        <p>Ruang untuk percakapan yang lebih dekat.</p>
+      </article>
+
+      <article class="dashboard-card">
+        <h2>👥 Ruang Bersama</h2>
+        <p>Berkumpul dan berdiskusi bersama anggota.</p>
+      </article>
+
+      <article class="dashboard-card">
+        <h2>✨ Aktivitas Komunitas</h2>
+        <p>Perjalanan Ruang Kita dimulai dari sini.</p>
+      </article>
+    </div>
+  </section>
   <footer>Ruang Kita © 2026 · Dibuat dengan </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -690,7 +789,38 @@ loginForm.addEventListener('submit', async (event) => {
     submitButton.disabled = false;
   }
 });
-const logoutButton = document.getElementById('logout-button');
+
+const dashboard = document.getElementById('dashboard');
+const mainContent = document.querySelector('main');
+const footer = document.querySelector('footer');
+const loginSection = document.querySelector('.login-section');
+const dashboardUser = document.getElementById('dashboard-user');
+
+function updatePageView(session) {
+  const loggedIn = Boolean(session);
+
+  dashboard.style.display = loggedIn ? 'block' : 'none';
+
+  if (mainContent) {
+    mainContent.style.display = loggedIn ? 'none' : 'block';
+  }
+
+  if (loginSection) {
+    loginSection.style.display = loggedIn ? 'none' : 'block';
+  }
+
+  if (footer) {
+    footer.style.display = loggedIn ? 'none' : 'block';
+  }
+
+  if (dashboardUser) {
+    dashboardUser.textContent = loggedIn
+      ? 'Kamu masuk sebagai ' + (session.user.email || 'anggota Ruang Kita')
+      : '';
+  }
+}
+
+  const logoutButton = document.getElementById('logout-button');
 
 async function updateLogoutButton() {
   const { data, error } = await supabaseClient.auth.getSession();
@@ -702,7 +832,7 @@ async function updateLogoutButton() {
 
 supabaseClient.auth.onAuthStateChange((_event, session) => {
   logoutButton.hidden = !session;
-
+updatePageView(session);
   if (session) {
     loginStatus.textContent =
       'Kamu sudah masuk sebagai ' +
@@ -728,7 +858,14 @@ logoutButton.addEventListener('click', async () => {
   logoutButton.disabled = false;
 });
 
+
 updateLogoutButton();
+
+supabaseClient.auth.getSession().then(({ data, error }) => {
+  if (!error) {
+    updatePageView(data.session);
+  }
+});
 </script>
 </body>
 </html>
