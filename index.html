@@ -558,6 +558,8 @@ body > header .tag {
 
     <button type="submit">Masuk</button>
     <p id="login-status" role="status"></p>
+    
+    <button type="button" id="logout-button" hidden>Keluar</button>
   </form> 
 <p>Belum punya akun?
   <button type="button" id="show-signup">Daftar di sini</button>
@@ -688,6 +690,45 @@ loginForm.addEventListener('submit', async (event) => {
     submitButton.disabled = false;
   }
 });
+const logoutButton = document.getElementById('logout-button');
+
+async function updateLogoutButton() {
+  const { data, error } = await supabaseClient.auth.getSession();
+
+  if (!error) {
+    logoutButton.hidden = !data.session;
+  }
+}
+
+supabaseClient.auth.onAuthStateChange((_event, session) => {
+  logoutButton.hidden = !session;
+
+  if (session) {
+    loginStatus.textContent =
+      'Kamu sudah masuk sebagai ' +
+      (session.user.email || 'anggota Ruang Kita') + '.';
+  }
+});
+
+logoutButton.addEventListener('click', async () => {
+  logoutButton.disabled = true;
+
+  const { error } = await supabaseClient.auth.signOut();
+
+  if (error) {
+    loginStatus.textContent = 'Gagal keluar: ' + error.message;
+  } else {
+    loginStatus.textContent = 'Kamu sudah keluar dari Ruang Kita.';
+    mode = 'login';
+    submitButton.textContent = 'Masuk';
+    showSignupButton.textContent = 'Daftar di sini';
+    loginForm.reset();
+  }
+
+  logoutButton.disabled = false;
+});
+
+updateLogoutButton();
 </script>
 </body>
 </html>
