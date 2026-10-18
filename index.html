@@ -601,5 +601,18 @@ body > header .tag {
   </main>
 
   <footer>Ruang Kita © 2026 · Dibuat dengan </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const SUPABASE_URL = 'https://wqqvhsehobmtqfxetqfj.supabase.co';
+  const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_1nwolqhj8HC9zVhInu5_yw_v3GnHmNW';
+
+  const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
+
+  console.log('Koneksi Supabase siap digunakan.');
+</script>
 </body>
 </html>
