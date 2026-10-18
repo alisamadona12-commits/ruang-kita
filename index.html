@@ -612,8 +612,21 @@ body > header .tag {
     SUPABASE_PUBLISHABLE_KEY
   );
 
-  console.log('Client Supabase:', !!supabaseClient);
-console.log('Supabase client berhasil dibuat jika hasilnya true.');
+  
+  const statusTes = document.createElement('p');
+  statusTes.id = 'supabase-test-status';
+  statusTes.textContent = 'Sedang memeriksa koneksi Supabase...';
+  document.body.appendChild(statusTes);
+
+  supabaseClient.auth.getSession()
+    .then(({ error }) => {
+      statusTes.textContent = error
+        ? 'Koneksi Supabase bermasalah: ' + error.message
+        : 'Supabase merespons dengan baik!';
+    })
+    .catch(() => {
+      statusTes.textContent = 'Tes koneksi gagal. Periksa URL, key, dan koneksi internet.';
+    });
 </script>
 </body>
 </html>
