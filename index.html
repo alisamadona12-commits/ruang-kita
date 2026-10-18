@@ -678,11 +678,11 @@ body > header .tag {
       </p>
       <p id="dashboard-user"></p>
     
+
 <button
   type="button"
   id="dashboard-logout-button"
   class="button"
-  onclick="document.getElementById('logout-button').click()"
 >
   Keluar
 </button>
@@ -867,6 +867,25 @@ logoutButton.addEventListener('click', async () => {
   logoutButton.disabled = false;
 });
 
+const dashboardLogoutButton = document.getElementById('dashboard-logout-button');
+
+dashboardLogoutButton.addEventListener('click', async () => {
+  dashboardLogoutButton.disabled = true;
+
+  const { error } = await supabaseClient.auth.signOut();
+
+  if (error) {
+    loginStatus.textContent = 'Gagal keluar: ' + error.message;
+  } else {
+    loginStatus.textContent = 'Kamu sudah keluar dari Ruang Kita.';
+    mode = 'login';
+    submitButton.textContent = 'Masuk';
+    showSignupButton.textContent = 'Daftar di sini';
+    loginForm.reset();
+  }
+
+  dashboardLogoutButton.disabled = false;
+});
 
 updateLogoutButton();
 
