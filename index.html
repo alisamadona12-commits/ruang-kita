@@ -637,13 +637,26 @@ body > header .tag {
   box-shadow: inset 3px 0 #b58aff;
 }
 
+
 @media (max-width: 600px) {
   .dashboard-layout {
     grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .dashboard-header,
+  .dashboard-grid {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .dashboard-sidebar {
     position: static;
+    width: 100%;
   }
 }
   </style>
