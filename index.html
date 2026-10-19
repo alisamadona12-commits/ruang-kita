@@ -659,6 +659,51 @@ body > header .tag {
     width: 100%;
   }
 }
+ 
+/* Tampilan HP Ruang Kita */
+@media (max-width: 600px) {
+  .dashboard {
+    width: 94%;
+    margin: 16px auto;
+  }
+
+  .dashboard-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .dashboard-sidebar {
+    padding: 14px;
+  }
+
+  .dashboard-sidebar h2 {
+    font-size: 18px;
+    margin-bottom: 14px;
+  }
+
+  .sidebar-link {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .dashboard-header {
+    padding: 20px 16px;
+  }
+
+  .dashboard-header h1 {
+    font-size: 24px;
+    line-height: 1.35;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .dashboard-card {
+    padding: 16px;
+  }
+}
   </style>
 </head>
 <body>
