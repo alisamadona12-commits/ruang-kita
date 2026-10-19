@@ -589,6 +589,63 @@ body > header .tag {
     grid-template-columns: 1fr;
   }
 }
+  
+/* Sidebar Ruang Kita */
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.dashboard-sidebar {
+  padding: 22px 14px;
+  border: 1px solid #38266d;
+  border-radius: 18px;
+  background: linear-gradient(160deg, #171331, #0c1025);
+  position: sticky;
+  top: 16px;
+}
+
+.dashboard-sidebar h2 {
+  margin: 0 0 24px;
+  color: #d9b8ff;
+  font-size: 20px;
+}
+
+.sidebar-label {
+  margin: 0 0 12px;
+  color: #9587bd;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+}
+
+.sidebar-link {
+  display: block;
+  margin: 6px 0;
+  padding: 12px;
+  border-radius: 10px;
+  color: #d0c4f4;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.sidebar-link:hover,
+.sidebar-link.active {
+  background: #6735b955;
+  color: #ffffff;
+  box-shadow: inset 3px 0 #b58aff;
+}
+
+@media (max-width: 600px) {
+  .dashboard-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-sidebar {
+    position: static;
+  }
+}
   </style>
 </head>
 <body>
@@ -670,6 +727,18 @@ body > header .tag {
   </main>
 
   <section class="dashboard" id="dashboard">
+  <div class="dashboard-layout">
+   
+      <aside class="dashboard-sidebar">
+        <h2>🌌 Ruang Kita</h2>
+        <p class="sidebar-label">MENU UTAMA</p>
+
+        <a href="#dashboard" class="sidebar-link active">🏠 Beranda</a>
+        <a href="#cerita" class="sidebar-link">📝 Berbagi Cerita</a>
+        <a href="#obrolan" class="sidebar-link">💬 Obrolan Pribadi</a>
+        <a href="#ruang-bersama" class="sidebar-link">👥 Ruang Bersama</a>
+        <a href="#profil" class="sidebar-link">✨ Profil</a>
+      </aside>
     <div class="dashboard-header">
       <h1>🌌 Selamat datang di Ruang Kita</h1>
       <p>
@@ -708,7 +777,9 @@ body > header .tag {
         <h2>✨ Aktivitas Komunitas</h2>
         <p>Perjalanan Ruang Kita dimulai dari sini.</p>
       </article>
+    
     </div>
+  </div>
   </section>
   <footer>Ruang Kita © 2026 · Dibuat dengan </footer>
 
