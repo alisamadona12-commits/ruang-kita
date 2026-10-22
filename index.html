@@ -840,8 +840,43 @@ body > header .tag {
     </div>
   </div>
   </section>
-  <footer>Ruang Kita © 2026 · Dibuat dengan </footer>
+  
+</section>
 
+<!-- HALAMAN BERBAGI CERITA -->
+<section id="cerita" class="dashboard" style="display: none;">
+  <div class="dashboard-main">
+    <div class="dashboard-header">
+      <h1>📝 Berbagi Cerita</h1>
+      <p>Ceritakan momen dan pengalamanmu bersama Ruang Kita.</p>
+    </div>
+
+    <div class="dashboard-card">
+      <h2>Tulis Ceritamu</h2>
+      <form id="story-form">
+        <label for="story-content">Apa yang ingin kamu ceritakan?</label>
+        <textarea
+          id="story-content"
+          rows="5"
+          placeholder="Tulis ceritamu di sini..."
+          required
+        ></textarea>
+        <button type="submit" class="button">Publikasikan Cerita</button>
+        <p id="story-message"></p>
+      </form>
+    </div>
+
+    <div class="dashboard-card">
+      <h2>📚 Cerita Komunitas</h2>
+      <div id="story-list">
+        <p>Cerita komunitas akan tampil di sini.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>Ruang Kita © 2026 · Dibuat dengan </footer>
+  
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
   const SUPABASE_URL = 'https://wqqvhsehobmtqfxetqfj.supabase.co';
